@@ -1,0 +1,60 @@
+/* ==========================================================================
+   04. SECTION 2: PREPARACIÓN (PASO A PASO) COMPONENT
+   ========================================================================== */
+
+.prep-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1140px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.prep-step-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.prep-step-card:hover {
+  transform: translateY(-6px);
+}
+
+.prep-img-wrapper {
+  width: 100%;
+  height: 480px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: none;
+  box-shadow: none;
+}
+
+.prep-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.prep-step-info {
+  margin-top: 16px;
+  max-width: 320px;
+}
+
+.step-number {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--accent-gold-bright);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.step-desc {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}

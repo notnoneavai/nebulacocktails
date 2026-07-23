@@ -1,0 +1,55 @@
+/* ==========================================================================
+   05. SECTION 3: INGREDIENTES & ELEMENTOS DE AUTOR COMPONENT
+   ========================================================================== */
+
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.ingredient-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.ingredient-card:hover {
+  transform: translateY(-6px);
+}
+
+.ingredient-img-wrapper {
+  width: 100%;
+  height: 440px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.ingredient-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ingredient-info {
+  margin-top: 16px;
+}
+
+.ingredient-title {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.ingredient-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}

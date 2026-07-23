@@ -1,0 +1,96 @@
+/* ==========================================================================
+   03. SECTION 1: HERO & 4-PHOTO 2X2 GRID COLLAGE COMPONENT
+   ========================================================================== */
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-title {
+  font-family: var(--font-sans);
+  font-size: 4.4rem;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 22px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #E65C7B 0%, #FFFFFF 55%, #C81E3A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: none;
+}
+
+.hero-subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* 4-Photo 2x2 Grid Collage with Rotated Cards (No Borders, No Text Badges) */
+.hero-visual {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.photo-collage-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 24px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.collage-card {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.3s ease;
+}
+
+.collage-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 2x2 Rotated Tilted Card Positions */
+.collage-card.card-1 {
+  transform: rotate(-6deg);
+  z-index: 1;
+}
+
+.collage-card.card-2 {
+  transform: rotate(5deg);
+  z-index: 2;
+}
+
+.collage-card.card-3 {
+  transform: rotate(4deg);
+  z-index: 3;
+}
+
+.collage-card.card-4 {
+  transform: rotate(-5deg);
+  z-index: 4;
+}
+
+.collage-card:hover {
+  z-index: 10;
+  transform: scale(1.08) rotate(0deg);
+}

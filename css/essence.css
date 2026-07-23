@@ -1,0 +1,84 @@
+/* ==========================================================================
+   08. SECTION 6: NUESTRA ESENCIA & BRAND PILLARS COMPONENT
+   ========================================================================== */
+
+.brand-seal-container {
+  margin-bottom: 24px;
+}
+
+.museum-badge-seal {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: none;
+  display: block;
+  margin: 0 auto;
+}
+
+.essence-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1100px;
+  width: 100%;
+  margin: 35px 0 20px 0;
+}
+
+.pillar-card {
+  padding: 32px 26px;
+  border-radius: 20px;
+  background: var(--bg-card);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.pillar-card:hover {
+  transform: translateY(-5px);
+}
+
+.pillar-num {
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--accent-gold-bright);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.pillar-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.pillar-desc {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.museum-quote p {
+  font-family: var(--font-sans);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--accent-gold-bright);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.museum-quote span {
+  font-size: 0.9rem;
+  letter-spacing: 5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.minimal-inline-footer {
+  margin-top: 30px;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  opacity: 0.6;
+}

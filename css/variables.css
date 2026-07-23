@@ -1,0 +1,197 @@
+/* ==========================================================================
+   01. VARIABLES, RESET & BASE ATMOSPHERE
+   ========================================================================== */
+
+:root {
+  --bg-dark: #090103;
+  --bg-card: rgba(28, 4, 9, 0.72);
+  --text-main: #FFF2F4;
+  --text-muted: #EBA8B2;
+  --accent-gold: #FF1744;
+  --accent-gold-bright: #FF4D6D;
+  --accent-red-glow: #FF003C;
+  --font-serif: 'Inter', -apple-system, sans-serif;
+  --font-sans: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  --radius-pill: 100px;
+  --radius-card: 20px;
+  --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hide Visual Scrollbar */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Fullscreen Blurred Photo Background & Atmospheric Vignette Overlay */
+.photo-bg-blurred {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(32px) brightness(0.36) saturate(1.25) contrast(1.15);
+  transform: scale(1.15);
+  z-index: 0;
+  pointer-events: none;
+  animation: partyPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes partyPulse {
+  0% {
+    filter: blur(32px) brightness(0.34) saturate(1.2) contrast(1.1);
+    transform: scale(1.12) rotate(0deg);
+  }
+  50% {
+    filter: blur(26px) brightness(0.39) saturate(1.35) contrast(1.18);
+    transform: scale(1.15) rotate(0.8deg);
+  }
+  100% {
+    filter: blur(36px) brightness(0.32) saturate(1.15) contrast(1.1);
+    transform: scale(1.13) rotate(-0.8deg);
+  }
+}
+
+.photo-bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(140, 10, 25, 0.32) 0%, rgba(85, 5, 16, 0.60) 45%, rgba(18, 2, 5, 0.90) 75%, rgba(5, 0, 2, 0.98) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ambient Canvas & Balanced Horizontal Dark Crimson Glow */
+#smokeCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.45;
+}
+
+.ambient-glow {
+  position: fixed;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1120px;
+  max-width: 95vw;
+  height: 850px;
+  background: radial-gradient(ellipse at 50% 40%, rgba(160, 12, 32, 0.28) 0%, rgba(100, 6, 20, 0.15) 45%, rgba(50, 3, 10, 0.04) 75%, transparent 100%);
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+  animation: ambientPartyGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes ambientPartyGlow {
+  0% {
+    opacity: 0.65;
+    transform: translateX(-50%) scale(0.95);
+  }
+  100% {
+    opacity: 0.95;
+    transform: translateX(-50%) scale(1.12);
+  }
+}
+
+.snap-container {
+  width: 100%;
+}
+
+.snap-section {
+  min-height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 100px 0 60px 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.width-100 {
+  width: 100%;
+  max-width: 100%;
+}
+
+.flex-center-full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Section Header Typography & Distribution */
+.section-header {
+  margin-bottom: 35px;
+  text-align: center;
+  max-width: 680px;
+  width: 100%;
+}
+
+.section-title {
+  font-family: var(--font-sans);
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  letter-spacing: 1.8px;
+  font-weight: 400;
+  line-height: 1.55;
+}

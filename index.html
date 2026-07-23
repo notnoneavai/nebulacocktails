@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEBULA COCKTAILS</title>
+
+  <!-- Favicon Icon -->
+  <link rel="icon" type="image/svg+xml" href="media/favicon.svg">
+  <link rel="shortcut icon" href="media/favicon.svg">
+
+  <!-- Modern Clean Typography (Inter + Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Modular Section Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/preparation.css">
+  <link rel="stylesheet" href="css/ingredients.css">
+  <link rel="stylesheet" href="css/ritual.css">
+  <link rel="stylesheet" href="css/atmosphere.css">
+  <link rel="stylesheet" href="css/essence.css">
+  <link rel="stylesheet" href="css/vapor.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Fullscreen Blurred Photo Background & Atmospheric Glow -->
+  <div class="photo-bg-blurred" style="background-image: url('media/red_nebula_bg.png');"></div>
+  <div class="photo-bg-overlay"></div>
+  <div class="ambient-glow"></div>
+  <canvas id="smokeCanvas"></canvas>
+
+  <!-- Minimalist Floating Navbar with Official Logo Emblem & Descriptive Text Links -->
+  <nav class="pill-navbar-container">
+    <div class="pill-navbar">
+      <a href="#hero" class="brand-pill-logo">
+        <img src="media/logo_main.jpg" alt="Nebula Logo" class="nav-brand-emblem">
+        <span class="brand-name">NEBULA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">Concepto</a></li>
+        <li><a href="#preparacion" class="nav-link">Preparación</a></li>
+        <li><a href="#ingredientes" class="nav-link">Ingredientes</a></li>
+        <li><a href="#video-showcase" class="nav-link">Experiencia</a></li>
+        <li><a href="#galeria" class="nav-link">Atmósfera</a></li>
+        <li><a href="#nosotros" class="nav-link">Esencia</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Fullscreen Scroll Container (CSS Scroll Snap) -->
+  <main class="snap-container">
+
+    <!-- Section 1: Hero Exhibition (100vh) -->
+    <section id="hero" class="snap-section hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            NEBULA <br><span class="gradient-text">COCKTAILS</span>
+          </h1>
+          <p class="hero-subtitle">
+            Cada copa, un universo.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="photo-collage-container">
+
+            <div class="collage-card card-1 dry-ice-fog-container">
+              <img src="media/girl7.jpg" alt="Nebula Atmosphere 1" class="collage-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="collage-card card-2 dry-ice-fog-container">
+              <img src="media/party_shots.png" alt="Nebula Party Shots" class="collage-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="collage-card card-3 dry-ice-fog-container">
+              <img src="media/party_cheers.png" alt="Nebula Party Cheers" class="collage-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="collage-card card-4 dry-ice-fog-container">
+              <img src="media/party_glass.png" alt="Nebula Cocktail Glass" class="collage-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Step by Step Preparation (100vh) -->
+    <section id="preparacion" class="snap-section section-prep-experience">
+      <div class="container flex-center-full flex-column width-100">
+        <div class="section-header text-center">
+          <h2 class="section-title">PREPARACIÓN</h2>
+          <p class="section-subtitle">Tres momentos en la creación de cada copa.</p>
+        </div>
+
+        <div class="prep-steps-grid">
+
+          <div class="prep-step-card">
+            <div class="prep-img-wrapper borderless-frame">
+              <img src="media/prep_step1.png" alt="Paso 1: Mezcla" class="prep-img">
+            </div>
+            <div class="prep-step-info text-center">
+              <span class="step-number">01</span>
+              <p class="step-desc">Infusión de botánicos y mezcla inicial.</p>
+            </div>
+          </div>
+
+          <div class="prep-step-card">
+            <div class="prep-img-wrapper borderless-frame">
+              <img src="media/prep_step2.png" alt="Paso 2: Humo" class="prep-img">
+            </div>
+            <div class="prep-step-info text-center">
+              <span class="step-number">02</span>
+              <p class="step-desc">Efecto de humo con hielo seco.</p>
+            </div>
+          </div>
+
+          <div class="prep-step-card">
+            <div class="prep-img-wrapper borderless-frame">
+              <img src="media/prep_step3.png" alt="Paso 3: Servido" class="prep-img">
+            </div>
+            <div class="prep-step-info text-center">
+              <span class="step-number">03</span>
+              <p class="step-desc">Servido y acabado final.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Ingredients & Elements -->
+    <section id="ingredientes" class="snap-section section-ingredients">
+      <div class="container flex-center-full flex-column width-100">
+        <div class="section-header text-center">
+          <h2 class="section-title">INGREDIENTES</h2>
+          <p class="section-subtitle">Niebla subcero, botánicos y destilados de firma.</p>
+        </div>
+
+        <div class="ingredients-grid">
+
+          <div class="ingredient-card">
+            <div class="ingredient-img-wrapper borderless-frame">
+              <img src="media/ing_dryice.png" alt="Hielo Seco Subcero" class="ingredient-img">
+            </div>
+            <div class="ingredient-info text-center">
+              <h3 class="ingredient-title">Hielo Seco (-78.5°C)</h3>
+              <p class="ingredient-desc">Efecto niebla densa y enfriamiento subcero instantáneo sin diluir.</p>
+            </div>
+          </div>
+
+          <div class="ingredient-card">
+            <div class="ingredient-img-wrapper borderless-frame">
+              <img src="media/ing_botanicals.png" alt="Botánicos de Autor" class="ingredient-img">
+            </div>
+            <div class="ingredient-info text-center">
+              <h3 class="ingredient-title">Botánicos de Autor</h3>
+              <p class="ingredient-desc">Infusiones de hibisco, frutos silvestres y corteza cítrica.</p>
+            </div>
+          </div>
+
+          <div class="ingredient-card">
+            <div class="ingredient-img-wrapper borderless-frame">
+              <img src="media/ing_spirits.png" alt="Destilados Artesanales" class="ingredient-img">
+            </div>
+            <div class="ingredient-info text-center">
+              <h3 class="ingredient-title">Destilados Artesanales</h3>
+              <p class="ingredient-desc">Licores seleccionados para fusionarse con el frío extremo.</p>
+            </div>
+          </div>
+
+          <div class="ingredient-card">
+            <div class="ingredient-img-wrapper borderless-frame">
+              <img src="media/ing_essences.png" alt="Esencias Volátiles" class="ingredient-img">
+            </div>
+            <div class="ingredient-info text-center">
+              <h3 class="ingredient-title">Esencias Volátiles</h3>
+              <p class="ingredient-desc">Vapores aromáticos que perfuman la copa al ser servida.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Video Exhibition (100vh) -->
+    <section id="video-showcase" class="snap-section section-video-experience">
+      <div class="container flex-center-full flex-column">
+        <div class="section-header text-center">
+          <h2 class="section-title">EXPERIENCIA</h2>
+          <p class="section-subtitle">Niebla, movimiento y textura en copa.</p>
+        </div>
+        <div class="video-player-container borderless-frame">
+          <video class="nebula-video" autoplay loop muted playsinline disablepictureinpicture>
+            <source src="media/nebula_video_si.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Atmosphere & Party Video Carousel -->
+    <section id="galeria" class="snap-section section-gallery-full">
+      <div class="container flex-center-full flex-column width-100">
+        <div class="section-header text-center">
+          <h2 class="section-title">ATMÓSFERA DE FIESTA</h2>
+          <p class="section-subtitle">Nuestra visión de la coctelería nocturna en acción.</p>
+        </div>
+
+        <!-- Party Atmosphere Video -->
+        <div class="video-player-container borderless-frame party-video-container">
+          <video class="nebula-video party-video" autoplay loop muted playsinline disablepictureinpicture>
+            <source src="media/nebula_experience.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Infinite Horizontal Moving Carousel Ticker -->
+        <div class="carousel-ticker-wrapper">
+          <div class="carousel-ticker-track">
+
+            <!-- Set 1 -->
+            <div class="carousel-card dry-ice-fog-container">
+              <img src="media/girl5.jpg" alt="Nebula Atmosphere 5" class="exhibition-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="carousel-card dry-ice-fog-container">
+              <img src="media/girl6.jpg" alt="Nebula Atmosphere 6" class="exhibition-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="carousel-card dry-ice-fog-container">
+              <img src="media/girl8.jpg" alt="Nebula Atmosphere 8" class="exhibition-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="carousel-card dry-ice-fog-container">
+              <img src="media/girl9.jpg" alt="Nebula Atmosphere 9" class="exhibition-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="carousel-card dry-ice-fog-container">
+              <img src="media/girl10.jpg" alt="Nebula Atmosphere 10" class="exhibition-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="carousel-card dry-ice-fog-container">
+              <img src="media/girl11.jpg" alt="Nebula Atmosphere 11" class="exhibition-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <!-- Set 2 (Duplicate for Seamless Infinite Loop) -->
+            <div class="carousel-card dry-ice-fog-container">
+              <img src="media/girl5.jpg" alt="Nebula Atmosphere 5 Duplicate" class="exhibition-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="carousel-card dry-ice-fog-container">
+              <img src="media/girl6.jpg" alt="Nebula Atmosphere 6 Duplicate" class="exhibition-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="carousel-card dry-ice-fog-container">
+              <img src="media/girl8.jpg" alt="Nebula Atmosphere 8 Duplicate" class="exhibition-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="carousel-card dry-ice-fog-container">
+              <img src="media/girl9.jpg" alt="Nebula Atmosphere 9 Duplicate" class="exhibition-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="carousel-card dry-ice-fog-container">
+              <img src="media/girl10.jpg" alt="Nebula Atmosphere 10 Duplicate" class="exhibition-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+            <div class="carousel-card dry-ice-fog-container">
+              <img src="media/girl11.jpg" alt="Nebula Atmosphere 11 Duplicate" class="exhibition-img">
+              <div class="dry-ice-steam-overlay"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Brand Essence & Pillars -->
+    <section id="nosotros" class="snap-section section-about">
+      <div class="container text-center flex-center-full flex-column">
+        <div class="section-header text-center">
+          <h2 class="section-title">NUESTRA ESENCIA</h2>
+          <p class="section-subtitle">Coctelería de autor y experiencia sensorial.</p>
+        </div>
+
+        <div class="brand-seal-container">
+          <img src="media/badge_sensorial.jpg" alt="Nebula Badge Monogram" class="museum-badge-seal">
+        </div>
+
+        <div class="essence-pillars-grid">
+          <div class="pillar-card borderless-frame">
+            <span class="pillar-num">01</span>
+            <h3 class="pillar-title">Experiencia Teatral</h3>
+            <p class="pillar-desc">Niebla en cascada a -78.5°C y fragancias volátiles que envuelven la copa.</p>
+          </div>
+
+          <div class="pillar-card borderless-frame">
+            <span class="pillar-num">02</span>
+            <h3 class="pillar-title">Diseño de Autor</h3>
+            <p class="pillar-desc">Cristalería elegante, recetas exclusivas e ingredientes artesanales.</p>
+          </div>
+
+          <div class="pillar-card borderless-frame">
+            <span class="pillar-num">03</span>
+            <h3 class="pillar-title">Atmósfera de Fiesta</h3>
+            <p class="pillar-desc">El centro de atención para barras exclusivas y eventos nocturnos.</p>
+          </div>
+        </div>
+
+        <div class="signature-quote museum-quote">
+          <p><em>"Cada copa, un universo."</em></p>
+          <span>NEBULA COCKTAILS</span>
+        </div>
+
+        <footer class="minimal-inline-footer">
+          <p>NEBULA COCKTAILS &copy; 2026</p>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+/* ==========================================================================
+   06. SECTION 4: EL RITUAL (VIDEO SHOWCASE) COMPONENT
+   ========================================================================== */
+
+.video-player-container {
+  width: 100%;
+  max-width: 900px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.nebula-video {
+  width: 100%;
+  height: auto;
+  max-height: 580px;
+  display: block;
+  object-fit: cover;
+}
