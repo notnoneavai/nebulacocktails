@@ -33,7 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
       this.maxLife = Math.random() * 320 + 220;
       // Dark crimson red color spectrum variations
       const hue = Math.floor(Math.random() * 20 + 345);
-      this.color = `hsla(${hue}, 80%, 35%, `;
+      // Built once at full strength; draw() applies the real alpha via
+      // ctx.globalAlpha instead of rebuilding this gradient every frame.
+      this.gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius);
+      this.gradient.addColorStop(0, `hsla(${hue}, 80%, 35%, 1)`);
+      this.gradient.addColorStop(0.5, 'rgba(120, 0, 25, 0.25)');
+      this.gradient.addColorStop(1, 'rgba(5, 0, 2, 0)');
     }
 
     update() {
@@ -54,17 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     draw() {
       ctx.save();
+      ctx.globalAlpha = this.alpha;
+      ctx.translate(this.x, this.y);
+      ctx.fillStyle = this.gradient;
       ctx.beginPath();
-      const gradient = ctx.createRadialGradient(
-        this.x, this.y, 0,
-        this.x, this.y, this.radius
-      );
-      gradient.addColorStop(0, `${this.color}${this.alpha})`);
-      gradient.addColorStop(0.5, `rgba(120, 0, 25, ${this.alpha * 0.25})`);
-      gradient.addColorStop(1, 'rgba(5, 0, 2, 0)');
-
-      ctx.fillStyle = gradient;
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.arc(0, 0, this.radius, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
     }
@@ -111,6 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
     embers.push(new PartyEmber());
   }
 
+  let rafId = null;
+
   function animateCanvas() {
     ctx.clearRect(0, 0, width, height);
     particles.forEach((p) => {
@@ -121,10 +122,19 @@ document.addEventListener('DOMContentLoaded', () => {
       e.update();
       e.draw();
     });
-    requestAnimationFrame(animateCanvas);
+    rafId = requestAnimationFrame(animateCanvas);
   }
 
   animateCanvas();
+
+  // Stop burning CPU/battery on a tab nobody is looking at.
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(rafId);
+    } else {
+      animateCanvas();
+    }
+  });
 
   // 2. Smart Animated Navbar (Scroll direction, idle fade, Section 1 always visible)
   const navbarContainer = document.querySelector('.pill-navbar-container');
@@ -133,10 +143,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let lastScrollY = window.scrollY;
   let idleTimeout = null;
 
+  // Only the very top of the page guarantees no content below the fixed
+  // navbar — the Hero's own height is not a safe proxy for that: on short
+  // viewports the Hero grows taller than 100vh, and keeping the navbar
+  // pinned "visible" for its entire height made it sit on top of the
+  // collage while the user scrolled through it.
+  const NAVBAR_TOP_THRESHOLD = 20;
+
   function handleNavbarScroll() {
     const currentScrollY = window.scrollY;
-    const heroSection = document.getElementById('hero');
-    const heroHeight = heroSection ? heroSection.offsetHeight - 120 : 450;
 
     // Active Navbar Link Highlight
     let current = '';
@@ -157,8 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Clear idle timeout on scroll event
     if (idleTimeout) clearTimeout(idleTimeout);
 
-    // RULE 1: Section 1 (Hero) -> ALWAYS VISIBLE
-    if (currentScrollY < heroHeight) {
+    // RULE 1: At the very top of the page -> ALWAYS VISIBLE
+    if (currentScrollY < NAVBAR_TOP_THRESHOLD) {
       if (navbarContainer) navbarContainer.classList.remove('nav-hidden');
       lastScrollY = currentScrollY;
       return;
@@ -174,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // RULE 4: Idle fade out after 2.5 seconds of no scrolling
       idleTimeout = setTimeout(() => {
-        if (window.scrollY > heroHeight && navbarContainer) {
+        if (window.scrollY > NAVBAR_TOP_THRESHOLD && navbarContainer) {
           navbarContainer.classList.add('nav-hidden');
         }
       }, 2500);
@@ -184,4 +199,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+
+  // 3. Lazy-load video sources: don't fetch the .mp4 files until their
+  // section is about to enter the viewport (they're several MB each).
+  const lazyVideos = document.querySelectorAll('video.nebula-video');
+  const videoObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const video = entry.target;
+      const source = video.querySelector('source[data-src]');
+      if (source) {
+        source.src = source.dataset.src;
+        video.load();
+        video.play().catch(() => {});
+      }
+      observer.unobserve(video);
+    });
+  }, { rootMargin: '200px' });
+
+  lazyVideos.forEach((video) => videoObserver.observe(video));
 });

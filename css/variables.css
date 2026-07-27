@@ -11,7 +11,7 @@
   --accent-gold-bright: #FF4D6D;
   --accent-red-glow: #FF003C;
   --font-serif: 'Inter', -apple-system, sans-serif;
-  --font-sans: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  --font-sans: 'Inter', sans-serif;
   --radius-pill: 100px;
   --radius-card: 20px;
   --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);

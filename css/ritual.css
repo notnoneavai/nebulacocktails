@@ -18,3 +18,15 @@
   display: block;
   object-fit: cover;
 }
+
+/* Nebula's own vertical prep footage (9:16) needs a portrait frame,
+   not the landscape box above — otherwise object-fit: cover crops out
+   most of the pour. Scoped to #video-showcase only. */
+#video-showcase .video-player-container {
+  max-width: 360px;
+}
+
+#video-showcase .nebula-video {
+  aspect-ratio: 9 / 16;
+  max-height: none;
+}
