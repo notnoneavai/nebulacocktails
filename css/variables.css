@@ -195,3 +195,26 @@ body::-webkit-scrollbar {
   font-weight: 400;
   line-height: 1.55;
 }
+
+/* Scroll-Reveal Utility (Team & Payment Method Cards)
+   No `transition` declared here on purpose: the components this is applied
+   to (.team-card, .payment-card) already carry `transition: var(--transition)`
+   themselves — declaring a second shorthand here would just fight that one
+   for which wins, since `transition` is all-or-nothing per element. */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.reveal-up.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

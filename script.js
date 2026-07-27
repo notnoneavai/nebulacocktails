@@ -218,4 +218,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { rootMargin: '200px' });
 
   lazyVideos.forEach((video) => videoObserver.observe(video));
+
+  // 4. Scroll-reveal entrance animation for Equipo & Métodos de Pago cards
+  const revealEls = document.querySelectorAll('.reveal-up');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('in-view');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  revealEls.forEach((el) => revealObserver.observe(el));
 });

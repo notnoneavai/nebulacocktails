@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="css/ritual.css">
   <link rel="stylesheet" href="css/atmosphere.css">
   <link rel="stylesheet" href="css/essence.css">
+  <link rel="stylesheet" href="css/team.css">
+  <link rel="stylesheet" href="css/payment.css">
   <link rel="stylesheet" href="css/vapor.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -51,6 +53,8 @@
         <li><a href="#ingredientes" class="nav-link">Ingredientes</a></li>
         <li><a href="#video-showcase" class="nav-link">Experiencia</a></li>
         <li><a href="#galeria" class="nav-link">Atmósfera</a></li>
+        <li><a href="#equipo" class="nav-link">Equipo</a></li>
+        <li><a href="#pagos" class="nav-link">Pagos</a></li>
         <li><a href="#nosotros" class="nav-link">Esencia</a></li>
       </ul>
     </div>
@@ -298,7 +302,161 @@
       </div>
     </section>
 
-    <!-- Section 6: Brand Essence & Pillars -->
+    <!-- Section 6: Nuestro Equipo -->
+    <section id="equipo" class="snap-section section-team">
+      <div class="container flex-center-full flex-column width-100">
+        <div class="section-header text-center">
+          <h2 class="section-title">NUESTRO EQUIPO</h2>
+          <p class="section-subtitle">Las manos y mentes detrás de cada copa Nebula.</p>
+        </div>
+
+        <div class="team-grid">
+
+          <div class="team-card reveal-up">
+            <div class="team-avatar"><span>DS</span></div>
+            <h3 class="team-name">Deysi Sánchez</h3>
+          </div>
+
+          <div class="team-card reveal-up">
+            <div class="team-avatar"><span>AC</span></div>
+            <h3 class="team-name">Alexander Cabrera</h3>
+          </div>
+
+          <div class="team-card reveal-up">
+            <div class="team-avatar"><span>CC</span></div>
+            <h3 class="team-name">Camilo Cabrera</h3>
+          </div>
+
+          <div class="team-card reveal-up">
+            <div class="team-avatar"><span>SC</span></div>
+            <h3 class="team-name">Sofía Carrión</h3>
+          </div>
+
+          <div class="team-card reveal-up">
+            <div class="team-avatar"><span>FG</span></div>
+            <h3 class="team-name">Freddy Guamán</h3>
+          </div>
+
+          <div class="team-card reveal-up">
+            <div class="team-avatar"><span>WM</span></div>
+            <h3 class="team-name">Wilson Martínez</h3>
+          </div>
+
+          <div class="team-card reveal-up">
+            <div class="team-avatar"><span>FQ</span></div>
+            <h3 class="team-name">Franco Quezada</h3>
+          </div>
+
+          <div class="team-card reveal-up">
+            <div class="team-avatar"><span>MJ</span></div>
+            <h3 class="team-name">Madeleine Jimenes</h3>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Métodos de Pago -->
+    <section id="pagos" class="snap-section section-payment">
+      <div class="container flex-center-full flex-column width-100">
+        <div class="section-header text-center">
+          <h2 class="section-title">MÉTODOS DE PAGO</h2>
+          <p class="section-subtitle">Elegí cómo pagar tu experiencia Nebula, sin fricción.</p>
+        </div>
+
+        <div class="payment-grid">
+
+          <!-- Banco Pichincha: mayor banco privado del Ecuador (fundado 1906).
+               Amarillo institucional histórico de su marca. -->
+          <div class="payment-card reveal-up" style="--brand: #FFC72C; --brand-soft: rgba(255, 199, 44, 0.22);">
+            <div class="payment-icon-wrapper">
+              <svg class="payment-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 10 12 4l9 6" />
+                <path d="M5 10v9M9.5 10v9M14.5 10v9M19 10v9" />
+                <path d="M3 19h18" />
+                <path d="M3 10h18" />
+              </svg>
+            </div>
+            <h3 class="payment-name">Banco Pichincha</h3>
+            <p class="payment-desc">Transferencia bancaria directa a nuestra cuenta corriente.</p>
+          </div>
+
+          <!-- Deuna!: billetera digital propia de Banco Pichincha (no es una
+               empresa aparte). Su identidad visual usa un dúo morado + verde
+               agua. -->
+          <div class="payment-card reveal-up" style="--brand: #8B5CF6; --brand-soft: rgba(139, 92, 246, 0.22);">
+            <div class="payment-icon-wrapper">
+              <svg class="payment-icon payment-icon-fill" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.2 2 4.6 13.6h5.7L9.4 22l9.9-13h-6.1L13.2 2Z" />
+              </svg>
+            </div>
+            <h3 class="payment-name">Deuna!</h3>
+            <p class="payment-desc">Billetera digital de Banco Pichincha: pagá al instante con QR o transferencia.</p>
+          </div>
+
+          <!-- Banco de Loja: banco regional fundado en 1968, hoy parte del
+               Grupo Pichincha. Verde y dorado son sus colores corporativos
+               reales. -->
+          <div class="payment-card reveal-up" style="--brand: #1C9C74; --brand-soft: rgba(28, 156, 116, 0.22);">
+            <div class="payment-icon-wrapper">
+              <svg class="payment-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 10 12 4l9 6" />
+                <path d="M5 10v9M9.5 10v9M14.5 10v9M19 10v9" />
+                <path d="M3 19h18" />
+                <path d="M3 10h18" />
+              </svg>
+            </div>
+            <h3 class="payment-name">Banco de Loja</h3>
+            <p class="payment-desc">Depósito o transferencia interbancaria.</p>
+          </div>
+
+          <!-- ahorita!: billetera digital propia de Banco de Loja, dentro de
+               su app de banca móvil. Usamos el dorado de la misma marca. -->
+          <div class="payment-card reveal-up" style="--brand: #D4A64F; --brand-soft: rgba(212, 166, 79, 0.22);">
+            <div class="payment-icon-wrapper">
+              <svg class="payment-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="6.5" y="2.5" width="11" height="19" rx="2.2" />
+                <path d="M9 18.2h6" />
+                <path d="M9.2 11.5 11 13.3l3.8-4" />
+              </svg>
+            </div>
+            <h3 class="payment-name">ahorita!</h3>
+            <p class="payment-desc">Billetera digital de Banco de Loja para pagar desde el celular, sin efectivo.</p>
+          </div>
+
+          <!-- Tarjeta de Crédito / Débito: ambas aceptan Visa y Mastercard,
+               por eso no le asignamos a ninguna el color exclusivo de una
+               sola red — un acento neutro le da identidad sin mentir sobre
+               cuál marca acepta cada una. -->
+          <div class="payment-card reveal-up" style="--brand: #2E3192; --brand-soft: rgba(46, 49, 146, 0.24);">
+            <div class="payment-icon-wrapper">
+              <svg class="payment-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2.5" y="5.5" width="19" height="13" rx="2" />
+                <path d="M2.5 10h19" />
+                <path d="M6 15h4" />
+              </svg>
+            </div>
+            <h3 class="payment-name">Tarjeta de Crédito</h3>
+            <p class="payment-desc">Visa y Mastercard, en el momento del evento.</p>
+          </div>
+
+          <div class="payment-card reveal-up" style="--brand: #F2542D; --brand-soft: rgba(242, 84, 45, 0.24);">
+            <div class="payment-icon-wrapper">
+              <svg class="payment-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2.5" y="5.5" width="19" height="13" rx="2" />
+                <path d="M2.5 10h19" />
+                <path d="M6 15.2 7.3 16.5 9.7 14" />
+              </svg>
+            </div>
+            <h3 class="payment-name">Tarjeta de Débito</h3>
+            <p class="payment-desc">Pago directo desde tu cuenta bancaria.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Brand Essence & Pillars -->
     <section id="nosotros" class="snap-section section-about">
       <div class="container text-center flex-center-full flex-column">
         <div class="section-header text-center">
