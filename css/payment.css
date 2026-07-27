@@ -33,6 +33,14 @@
 .payment-card:nth-child(4) { transition-delay: 0.24s; }
 .payment-card:nth-child(5) { transition-delay: 0.32s; }
 .payment-card:nth-child(6) { transition-delay: 0.4s; }
+.payment-card:nth-child(7) { transition-delay: 0.48s; }
+
+/* A 7th card leaves a lone item on the last row of a 3-column grid —
+   center it instead of letting it hug the left edge. Reset in vapor.css
+   media queries where the grid drops to 2 or 1 columns. */
+.payment-card:nth-child(3n+1):last-child {
+  grid-column: 2;
+}
 
 /* Each card sets --brand / --brand-soft inline (same pattern already used
    for the hero's background-image) to its real institutional brand color —

@@ -98,6 +98,12 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
   }
+
+  /* The 3-column lone-item centering trick doesn't apply once the grid
+     drops to 2 columns — let the 7th card sit in its natural column. */
+  .payment-card:nth-child(3n+1):last-child {
+    grid-column: auto;
+  }
 }
 
 /* Mobile Devices (max-width: 768px) */
@@ -232,6 +238,10 @@
   .payment-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .payment-card:nth-child(3n+1):last-child {
+    grid-column: auto;
   }
 }
 
