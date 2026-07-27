@@ -1,5 +1,5 @@
 /* ==========================================================================
-   11. DRY ICE VAPOR OVERLAYS & MOBILE RESPONSIVE UI ADAPTATION
+   12. DRY ICE VAPOR OVERLAYS & MOBILE RESPONSIVE UI ADAPTATION
    ========================================================================== */
 
 /* Dry Ice Steam / Subzero Vapor Effect Overlay for Glasses & Cards */
@@ -227,6 +227,19 @@
   .museum-badge-seal {
     width: 95px;
     height: 95px;
+  }
+
+  /* Hacé tu Pedido (WhatsApp CTA) Mobile */
+  .whatsapp-cta {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 28px;
+    gap: 14px;
+  }
+
+  .whatsapp-cta-text {
+    align-items: center;
+    text-align: center;
   }
 
   /* Equipo & Métodos de Pago Sections Mobile */
