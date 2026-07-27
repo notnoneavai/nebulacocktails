@@ -1,13 +1,4 @@
 /* ==========================================================================
    NEBULA COCKTAILS - Modular Main Stylesheet Architecture
+   (Loaded via <link> tags in index.html <head>, in this same order)
    ========================================================================== */
-
-@import url('css/variables.css');
-@import url('css/navbar.css');
-@import url('css/hero.css');
-@import url('css/preparation.css');
-@import url('css/ingredients.css');
-@import url('css/ritual.css');
-@import url('css/atmosphere.css');
-@import url('css/essence.css');
-@import url('css/vapor.css');
