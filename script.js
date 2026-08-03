@@ -230,4 +230,231 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
   revealEls.forEach((el) => revealObserver.observe(el));
+
+  // 5. Assets Gallery Carousel & Lightbox Interactivity
+  const track = document.getElementById('galleryTrack');
+  const cards = Array.from(track.querySelectorAll('.gallery-card'));
+  const prevBtn = document.getElementById('galleryPrev');
+  const nextBtn = document.getElementById('galleryNext');
+  const dotsContainer = document.getElementById('galleryDots');
+
+  let currentIndex = 0;
+  let itemsPerView = getItemsPerView();
+  let autoplayInterval = null;
+
+  function getItemsPerView() {
+    if (window.innerWidth <= 600) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
+  }
+
+  // Generate dots
+  function setupDots() {
+    dotsContainer.innerHTML = '';
+    const dotsCount = Math.max(1, cards.length - getItemsPerView() + 1);
+    for (let i = 0; i < dotsCount; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('gallery-dot');
+      if (i === currentIndex) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateCarousel();
+        resetAutoplay();
+      });
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function updateCarousel() {
+    const itemsCount = cards.length;
+    itemsPerView = getItemsPerView();
+    const maxIndex = Math.max(0, itemsCount - itemsPerView);
+    if (currentIndex > maxIndex) {
+      currentIndex = maxIndex;
+    }
+
+    const gap = 20; // Matches CSS gap
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const offset = currentIndex * (cardWidth + gap);
+
+    track.style.transform = `translateX(-${offset}px)`;
+
+    // Update buttons state
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= maxIndex;
+
+    // Update dots
+    const dots = Array.from(dotsContainer.querySelectorAll('.gallery-dot'));
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentIndex);
+    });
+
+    // Play/Pause videos in view
+    cards.forEach((card, index) => {
+      const video = card.querySelector('video');
+      if (video) {
+        if (index >= currentIndex && index < currentIndex + itemsPerView) {
+          // Play video if it is in viewport
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      }
+    });
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayInterval = setInterval(() => {
+      const maxIndex = Math.max(0, cards.length - getItemsPerView());
+      if (currentIndex >= maxIndex) {
+        currentIndex = 0; // Loop back
+      } else {
+        currentIndex++;
+      }
+      updateCarousel();
+    }, 3500);
+  }
+
+  function stopAutoplay() {
+    if (autoplayInterval) {
+      clearInterval(autoplayInterval);
+      autoplayInterval = null;
+    }
+  }
+
+  function resetAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+      resetAutoplay();
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    const maxIndex = Math.max(0, cards.length - getItemsPerView());
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateCarousel();
+      resetAutoplay();
+    }
+  });
+
+  // Pause on hover
+  const carouselWrapper = document.querySelector('.gallery-carousel-wrapper');
+  if (carouselWrapper) {
+    carouselWrapper.addEventListener('mouseenter', stopAutoplay);
+    carouselWrapper.addEventListener('mouseleave', startAutoplay);
+  }
+
+  window.addEventListener('resize', () => {
+    setupDots();
+    updateCarousel();
+  });
+
+  // Lightbox Functionality
+  const lightbox = document.getElementById('lightboxModal');
+  const lightboxMediaContainer = document.getElementById('lightboxMediaContainer');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+
+  let activeLightboxIndex = 0;
+
+  function openLightbox(index) {
+    stopAutoplay(); // Stop autoplay when viewing in full screen
+    activeLightboxIndex = index;
+    lightbox.classList.add('active');
+    loadLightboxMedia();
+    document.body.style.overflow = 'hidden'; // Stop page scrolling
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    lightboxMediaContainer.innerHTML = '';
+    document.body.style.overflow = ''; // Restore page scrolling
+    startAutoplay(); // Resume autoplay when closing lightbox
+  }
+
+  function loadLightboxMedia() {
+    lightboxMediaContainer.innerHTML = '';
+    const selectedCard = cards[activeLightboxIndex];
+    const mediaType = selectedCard.dataset.type;
+    const mediaSrc = selectedCard.dataset.src;
+
+    let mediaElement;
+    if (mediaType === 'video') {
+      mediaElement = document.createElement('video');
+      mediaElement.src = mediaSrc;
+      mediaElement.controls = true;
+      mediaElement.autoplay = true;
+      mediaElement.loop = true;
+      mediaElement.className = 'lightbox-media';
+    } else {
+      mediaElement = document.createElement('img');
+      mediaElement.src = mediaSrc;
+      mediaElement.alt = `Nebula Asset ${activeLightboxIndex + 1}`;
+      mediaElement.className = 'lightbox-media';
+    }
+
+    mediaElement.addEventListener('load', () => {
+      mediaElement.classList.add('loaded');
+    });
+    if (mediaType === 'video') {
+      mediaElement.addEventListener('loadeddata', () => {
+        mediaElement.classList.add('loaded');
+      });
+    }
+
+    lightboxMediaContainer.appendChild(mediaElement);
+    lightboxCounter.textContent = `${activeLightboxIndex + 1} / ${cards.length}`;
+  }
+
+  function navigateLightbox(direction) {
+    activeLightboxIndex += direction;
+    if (activeLightboxIndex < 0) {
+      activeLightboxIndex = cards.length - 1;
+    } else if (activeLightboxIndex >= cards.length) {
+      activeLightboxIndex = 0;
+    }
+    loadLightboxMedia();
+  }
+
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      openLightbox(index);
+    });
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+  lightboxNext.addEventListener('click', () => navigateLightbox(1));
+
+  // Close lightbox on click outside the media
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target.classList.contains('lightbox-content-wrapper')) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+
+  // Initial setup
+  setupDots();
+  setTimeout(() => {
+    updateCarousel();
+    startAutoplay();
+  }, 100);
 });
